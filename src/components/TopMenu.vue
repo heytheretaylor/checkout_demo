@@ -1,15 +1,19 @@
 <template>
 	<div id="top-menu">
 		<!-- <div id="top-menu__area"> -->
-		<div class="menu-section" @click="$emit('change', 0)">
+		<div
+			style="margin-right: 1rem"
+			class="menu-section"
+			@click="$emit('change', 0)"
+		>
 			<img src="../assets/hamburger.svg" alt="" srcset="" />
 		</div>
 		<div class="middle-text" v-show="selectedPage === 1">Money 20/20 Store</div>
 		<div class="menu-section">
-			<div>
+			<div @click="$emit('change', 3)">
 				<img src="../assets/qr_icon.svg" alt="" srcset="" />
 			</div>
-			<div>
+			<div style="margin-left: 1rem" @click="$emit('change', 2)">
 				<img src="../assets/bag_icon.svg" alt="" srcset="" />
 			</div>
 		</div>
@@ -41,8 +45,8 @@ export default {
 	/* flex: 1; */
 	height: 1.6rem;
 	display: flex;
-	width: 18%;
-	justify-content: space-between;
+	/* width: 18%; */
+	/* justify-content: space-between; */
 }
 .menu-section img {
 	cursor: pointer;

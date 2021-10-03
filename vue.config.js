@@ -10,5 +10,8 @@ module.exports = {
 				'Assets': path.resolve(__dirname, 'src/assets')
 			}
 		}
+	},
+	devServer: {
+		// https: true
 	}
 }

@@ -4,7 +4,7 @@
 			<TopMenu @change="selectedPage = $event" :selectedPage="selectedPage" />
 			<transition name="slide-fade" mode="out-in">
 				<component
-					class="component"
+					:class="selectedPage !== 3 ? 'component' : ''"
 					@change="selectedPage = $event"
 					@play="playVid"
 					:is="currentPage"
@@ -77,6 +77,13 @@ export default {
 	--prime-blue: #1b0f66;
 	--prime-green: #1fca7e;
 	--light-green: #57e6a7;
+}
+h1,
+h2,
+h3,
+h4 {
+	margin-block-start: 0.2em;
+	margin-block-end: 0.2em;
 }
 #app {
 	min-height: 100vh;

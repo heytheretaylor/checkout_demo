@@ -13,7 +13,5 @@ export default {};
 .title > h1,
 .title > h4 {
 	text-transform: uppercase;
-	margin-block-start: 0.2em;
-	margin-block-end: 0.2em;
 }
 </style>
