@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div @click="$emit('change', 0)" class="exit_btn">X</div>
-		<video ref="camera"></video>
+		<video @click="$emit('change', 1)" ref="camera"></video>
 	</div>
 </template>
 

@@ -1,7 +1,11 @@
 <template>
 	<div id="landing">
 		<Title />
-		<ImageContainer class="center-img" :imglink="'Swag@2x.png'">
+		<ImageContainer
+			@click.native="$emit('change', 1)"
+			class="center-img"
+			:imglink="'Swag@2x.png'"
+		>
 			<div
 				style="
 					top: 0;

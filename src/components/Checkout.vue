@@ -2,6 +2,16 @@
 	<div id="checkout">
 		<image-container :imglink="'Swag@2x.png'" />
 		<section>
+			<h2>Select Your Swag</h2>
+			<h4>
+				<select name="swag" id="swag-select">
+					<option value="hat">Hat</option>
+					<option value="hat">Pen</option>
+					<option value="hat">Golf Equipment</option>
+				</select>
+			</h4>
+		</section>
+		<section>
 			<h2>Outseer Cap</h2>
 			<h4>Description</h4>
 			<p>
