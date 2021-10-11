@@ -39,11 +39,12 @@ export default {
 	z-index: 100;
 }
 .menu-section {
-	flex: 1;
+	flex: 2;
 	height: 1.6rem;
 	display: flex;
 }
 .menu-section:nth-child(2) {
+	flex: 1;
 	justify-content: flex-end;
 }
 .menu-section img {

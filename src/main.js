@@ -1,3 +1,4 @@
+import { initializeApp } from "firebase/app";
 import Vue from "vue";
 import App from "./App.vue";
 import "./registerServiceWorker";
@@ -7,7 +8,6 @@ import BigButton from "./components/subElements/BigButton.vue";
 import ImageContainer from "./components/subElements/ImageContainer.vue";
 import Checkbox from "./components/subElements/Checkbox.vue";
 import Divider from "./components/subElements/Divider.vue";
-import { initializeApp } from "firebase/app";
 
 Vue.config.productionTip = false;
 
