@@ -4,19 +4,18 @@
 		<section>
 			<h2>Select Your Swag</h2>
 			<h4>
-				<select name="swag" id="swag-select">
-					<option value="hat">Hat</option>
-					<option value="hat">Pen</option>
-					<option value="hat">Golf Equipment</option>
+				<select v-model="selection" name="swag" id="swag-select">
+					<option v-for="(option, prop) in options" :key="prop" :value="prop">
+						{{ option.title }}
+					</option>
 				</select>
 			</h4>
 		</section>
 		<section>
-			<h2>Outseer Cap</h2>
+			<h2>{{ selectedOption.title }}</h2>
 			<h4>Description</h4>
 			<p>
-				The Outseer Cap is made of durable organic canvas with brushed metal
-				hardware and tonal embroidery. Talk about a home run.
+				{{ selectedOption.copy }}
 			</p>
 		</section>
 		<section>
@@ -84,6 +83,36 @@
 <script>
 export default {
 	methods: {},
+	data() {
+		return {
+			selection: "pen",
+		};
+	},
+	computed: {
+		options() {
+			return {
+				cap: {
+					id: "cap",
+					title: "Outseer Cap",
+					copy: `The Outseer Cap is made of durable organic canvas with brushed metal
+				hardware and tonal embroidery. Talk about a home run.`,
+				},
+				pen: {
+					id: "pen",
+					title: "Outseer Pen",
+					copy: `A versatile ballpoint pen in our sleek color system, show your support before you write anything!`,
+				},
+				golfballs: {
+					id: "golfballs",
+					title: "Golf Balls",
+					copy: `A pack of standard size and weight balls, ready for the green.`,
+				},
+			};
+		},
+		selectedOption() {
+			return this.options[this.selection];
+		},
+	},
 };
 </script>
 

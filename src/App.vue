@@ -11,20 +11,19 @@
 				/>
 			</transition>
 			<video
-				v-if="showVid"
+				v-show="showVid"
 				id="wallpaper-video"
 				ref="wallpaper-video"
 				class="wallpaper-video"
 				muted=""
 				playsinline=""
-				autoplay
-				preload="none"
+				preload="auto"
 				data-inline-media=""
 				data-inline-media-basepath="iphone-13-pro/2021/404b23a8-f9c5-466c-b0e6-3d36705b959d/anim"
 				data-inline-media-locale="us"
 				data-inline-media-name="wallpaper"
 				aria-hidden="true"
-				src="./assets/othertest.mp4"
+				src="./assets/Risk_Engine_Load Screen.mp4"
 				@ended="vidEnded"
 			></video>
 			<!-- <Landing /> -->
@@ -54,11 +53,13 @@ export default {
 	methods: {
 		playVid() {
 			this.showVid = true;
-			// this.$refs["wallpaper-video"].play();
+			this.$refs["wallpaper-video"].play();
+			this.$nextTick().then(() => {
+				this.selectedPage = 2;
+			});
 		},
 		vidEnded(event) {
 			this.showVid = false;
-			this.selectedPage = 2;
 			console.log(event, "vid ended");
 		},
 	},
