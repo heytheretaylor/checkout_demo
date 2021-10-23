@@ -24,27 +24,33 @@
 				<div>Subtotal</div>
 				<div>$18.00</div>
 			</h4>
-			<h4 class="price-line" style="color: #1fca7e">
+			<!-- <h4 class="price-line" style="color: #1fca7e">
 				<div>Money 20/20 Promo</div>
 				<div>-$18.00</div>
-			</h4>
+			</h4> -->
 			<divider />
 			<h4 class="price-line">
 				<div>Total</div>
-				<div>$0.00</div>
+				<div>$18.00</div>
 			</h4>
 		</section>
 		<section>
-			<h2 style="margin-bottom: 1rem">Shipping Address</h2>
+			<h2 class="flex justify-between content-end" style="margin-bottom: 1rem">
+				Shipping Address
+				<div style="font-size: 0.8rem; font-weight: normal; align-self: center">
+					<input type="checkbox" name="auto" id="auto" @change="autofill" />
+					<label for="auto">Autofill</label>
+				</div>
+			</h2>
 			<form class="shipping_form">
 				<label for="fname">Full Name</label>
-				<input type="text" id="fname" name="fname" />
+				<input v-model="fullName" type="text" id="fname" name="fname" />
 				<label for="email">Email</label>
-				<input type="text" id="email" name="email" />
+				<input v-model="email" type="text" id="email" name="email" />
 			</form>
 		</section>
 		<section>
-			<h2>Payment Method</h2>
+			<h2 class="">Payment Method</h2>
 			<div class="flex mt-4">
 				<img
 					style="max-height: 3rem"
@@ -54,17 +60,17 @@
 				/>
 				<form class="ml-4">
 					<label for="ccard">Enter Valid Credit Card Number</label>
-					<input type="text" id="ccard" name="ccard" />
+					<input v-model="cc" type="text" id="ccard" name="ccard" />
 				</form>
 			</div>
 			<div class="flex justify-between mt-4">
 				<form style="max-width: 40%">
 					<label for="expiry">Expiry Date</label>
-					<input type="text" id="expiry" name="expiry" />
+					<input v-model="expiry" type="text" id="expiry" name="expiry" />
 				</form>
 				<form style="max-width: 47%">
 					<label for="cvv">CVV</label>
-					<input type="text" id="cvv" name="cvv" />
+					<input v-model="cvv" type="text" id="cvv" name="cvv" />
 				</form>
 			</div>
 			<section>
@@ -81,11 +87,22 @@
 </template>
 
 <script>
+const FORM_ENTRIES = {
+	fullName: "Norman McArthur",
+	email: "norm.mcarthur@KoL.gov",
+	cc: "4000 1234 5678 9012",
+	expiry: "08/25",
+	cvv: "***",
+};
 export default {
-	methods: {},
 	data() {
 		return {
 			selection: "pen",
+			isFilled: false,
+			...Object.keys(FORM_ENTRIES).reduce((accObj, key) => {
+				accObj[key] = "";
+				return accObj;
+			}, {}),
 		};
 	},
 	computed: {
@@ -113,6 +130,19 @@ export default {
 			return this.options[this.selection];
 		},
 	},
+	methods: {
+		autofill() {
+			console.log("phil up fill");
+			Object.entries(FORM_ENTRIES).forEach(([key, value]) => {
+				if (!this.isFilled) {
+					this[key] = value;
+				} else {
+					this[key] = "";
+				}
+			});
+			this.isFilled = !this.isFilled;
+		},
+	},
 };
 </script>
 
@@ -121,18 +151,6 @@ export default {
 	color: black;
 	text-align: left;
 	/* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
-}
-.flex {
-	display: flex;
-}
-.justify-between {
-	justify-content: space-between;
-}
-.mt-4 {
-	margin-top: 1rem;
-}
-.ml-4 {
-	margin-left: 1rem;
 }
 section {
 	margin: 2rem 0;
